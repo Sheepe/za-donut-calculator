@@ -27,8 +27,6 @@ interface DonutDisplayProps {
     berryStorage: BerryStorage
 }
 
-const profiles = ["Meringue", "Curry", "Jam", "Chocolate", "Cream"]
-
 const SolutionDonut = ({
     profile,
     berries,
@@ -38,7 +36,7 @@ const SolutionDonut = ({
     berryStorage,
 }: DonutDisplayProps) => {
     const theme = useMantineTheme()
-	
+
     return (
         <Flex
             p="xs"

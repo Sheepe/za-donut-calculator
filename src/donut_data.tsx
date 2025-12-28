@@ -278,6 +278,14 @@ export const DONUT_TYPES = [
     "fresh",
 ] as const
 
+export const DONUT_PROFILES = [
+    "Meringue",
+    "Curry",
+    "Jam",
+    "Chocolate",
+    "Cream",
+] as const
+
 export type BerryType = keyof typeof BERRY_DATA
 export type DonutType = (typeof DONUT_TYPES)[number]
 export type Berry = keyof (typeof BERRY_DATA)[BerryType]

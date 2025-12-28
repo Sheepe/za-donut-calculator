@@ -9,6 +9,7 @@ import {
 } from "@mantine/core"
 import {
     BERRY_DATA,
+    DONUT_PROFILES,
     DONUT_TYPES,
     type Berry,
     type BerryType,
@@ -33,11 +34,8 @@ interface DisplayDonutProps {
     setSavedDonuts: (v: SavedDonut[]) => void
 }
 
-const profiles = ["Meringue", "Curry", "Jam", "Chocolate", "Cream"]
 const capitalize = (s: string) =>
     s && String(s[0]).toUpperCase() + String(s).slice(1)
-
-// const getSavedDonut
 
 const DisplayDonut = ({
     name,
@@ -50,7 +48,7 @@ const DisplayDonut = ({
     id,
     setSavedDonuts,
 }: DisplayDonutProps) => {
-	const clipboard = useClipboard({ timeout: 2500 });
+    const clipboard = useClipboard({ timeout: 2500 })
     const theme = useMantineTheme()
     const map = new Map()
     let donutType = ""
@@ -64,7 +62,7 @@ const DisplayDonut = ({
         }
         if (profile[i] > best) {
             best = profile[i]
-            donutType = profiles[i]
+            donutType = DONUT_PROFILES[i]
         }
     }
 
@@ -160,16 +158,19 @@ const DisplayDonut = ({
                         color="gray"
                         onClick={() => {
                             let string = `Donut "${name}"\nProfile: ${profile
-                                .map((v, i) => `${capitalize(DONUT_TYPES[i])} ${v}`)
+                                .map(
+                                    (v, i) =>
+                                        `${capitalize(DONUT_TYPES[i])} ${v}`
+                                )
                                 .join(", ")}\nBerries:\n`
                             for (let i = 0; i < berries.length; i++) {
                                 const berry = berries[i]
                                 string += ` - x${berry[2]} ${capitalize(
                                     berry[0]
                                 )} ${capitalize(berry[1])} Berry`
-								if (i !== (berries.length -1)) {
-									string += "\n"
-								}
+                                if (i !== berries.length - 1) {
+                                    string += "\n"
+                                }
                             }
                             notifications.show({
                                 title: "Donut Copied",
@@ -178,9 +179,9 @@ const DisplayDonut = ({
                                 autoClose: 2000,
                                 withCloseButton: true,
                             })
-							clipboard.copy(string)
+                            clipboard.copy(string)
                         }}
-						disabled={clipboard.copied}
+                        disabled={clipboard.copied}
                     >
                         <FaShareFromSquare size={20} />
                     </ActionIcon>
