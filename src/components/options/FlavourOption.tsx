@@ -112,7 +112,7 @@ const FlavourOption = ({
                                 MODE
                             </Text>
                         }
-                        leftSection={icons[goal.mode]}
+                        leftSection={icons[draftMode]}
                         allowDeselect={false}
                         value={draftMode}
                         pr="lg"
