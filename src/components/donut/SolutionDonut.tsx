@@ -38,26 +38,7 @@ const SolutionDonut = ({
     berryStorage,
 }: DonutDisplayProps) => {
     const theme = useMantineTheme()
-    const map = new Map()
-    let donutType = ""
-    let best = 0
-
-    for (let i = 0; i < profile.length; i++) {
-        if (map.get(profile[i]) === undefined) {
-            map.set(profile[i], 1)
-        } else {
-            map.set(profile[i], map.get(profile[i]) + 1)
-        }
-        if (profile[i] > best) {
-            best = profile[i]
-            donutType = profiles[i]
-        }
-    }
-
-    if (map.get(best) > 1) {
-        donutType = "Rainbow"
-    }
-
+	
     return (
         <Flex
             p="xs"
@@ -83,9 +64,6 @@ const SolutionDonut = ({
                 <></>
             )}
             <Stack w="100%" gap="xs" m=".2em" mb="0px">
-                {/* <Text fw={650} w="100%" p="0px" size="lg" h="md" mb="xs">
-                    {`${donutType} Donut`}
-                </Text> */}
                 <Group gap="xs">
                     {profile.map((v, i) => {
                         return (
