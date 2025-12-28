@@ -1,4 +1,5 @@
 import { Center, Image, Stack, Title } from "@mantine/core"
+import logo from "../../assets/favicon.png"
 
 const AppTitle = () => {
     return (
@@ -12,7 +13,7 @@ const AppTitle = () => {
                 </Title>
             </Stack>
             <Center>
-                <Image src="/src/assets/favicon.png" w="64px" />
+                <Image src={logo} w="64px" />
             </Center>
         </Center>
     )
